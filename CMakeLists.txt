@@ -18,8 +18,13 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: GPL-3.0-or-later.
 #
-PROJECT("monkey-hammer")
+#PROJECT("monkey-hammer")
 cmake_minimum_required (VERSION 3.12)
+
+# FIXME: until automatic versioning is fixed, we hard code:
+set(MONKEY_VERSION_MAJOR 0)
+set(MONKEY_VERSION_MINOR 0)
+set(MONKEY_VERSION_PATCH 0)
 
 get_filename_component(MH_NATIVE_ROOT "${CMAKE_CURRENT_SOURCE_DIR}" ABSOLUTE)
 
@@ -33,7 +38,10 @@ set(MH_MODULE_DIR "/${CMAKE_INSTALL_LIBDIR}/cmake")
 string(REPLACE ";" "${MH_MODULE_DIR};" MH_MODULE_PATH "${CMAKE_PREFIX_PATH}${MH_MODULE_DIR}")
 list(APPEND CMAKE_MODULE_PATH ${MH_MODULE_PATH})
 
-include("colorized_output")
+include(colorized_output)
+
+# Try to figure out what project version we are building
+include(initialize_project_version)
 
 ##############################################################################
 # Check to see if this is an out-of-source build or not
@@ -48,3 +56,7 @@ ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
 # Add doxygen make target for source documentation
 include(doxygen)
+include(CTest)
+include(CPack)
+
+add_subdirectory(monkey-core)
