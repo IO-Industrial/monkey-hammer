@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# delete CMakeFiles directories
+rm -rf `find . | grep CMakeFiles`
+
+rm -rf `find . | grep CMakeCache.txt`

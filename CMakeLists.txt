@@ -33,7 +33,16 @@ set(MH_MODULE_DIR "/${CMAKE_INSTALL_LIBDIR}/cmake")
 string(REPLACE ";" "${MH_MODULE_DIR};" MH_MODULE_PATH "${CMAKE_PREFIX_PATH}${MH_MODULE_DIR}")
 list(APPEND CMAKE_MODULE_PATH ${MH_MODULE_PATH})
 
-#message("CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}")
 include("colorized_output")
 
+##############################################################################
+# Check to see if this is an out-of-source build or not
+##############################################################################
+IF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+	MESSAGE("${Red}Something is wrong... It looks like you are attempting to build${ColourReset}")
+	MESSAGE("${Red}in the root directory.  Please don't.${ColourReset}")
+    MESSAGE("${Red}Source directory = ${CMAKE_SOURCE_DIR}${ColourReset}")
+    MESSAGE("${Red}Binary directory = ${CMAKE_BINARY_DIR}${ColourReset}")
+    MESSAGE(FATAL_ERROR "Prevented in-tree build. This is bad practice.${ColourReset}")   
+ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
