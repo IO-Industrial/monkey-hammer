@@ -43,6 +43,8 @@ include(colorized_output)
 # Try to figure out what project version we are building
 include(initialize_project_version)
 
+set (CMAKE_CXX_STANDARD 11)
+
 ##############################################################################
 # Check to see if this is an out-of-source build or not
 ##############################################################################
@@ -54,9 +56,12 @@ IF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     MESSAGE(FATAL_ERROR "Prevented in-tree build. This is bad practice.${ColourReset}")   
 ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
+include(external_dependencies)
+
 # Add doxygen make target for source documentation
 include(doxygen)
 include(CTest)
 include(CPack)
 
 add_subdirectory(monkey-core)
+add_subdirectory(monkey-core-test)
