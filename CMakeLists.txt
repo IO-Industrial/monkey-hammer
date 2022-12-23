@@ -46,3 +46,5 @@ IF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
     MESSAGE(FATAL_ERROR "Prevented in-tree build. This is bad practice.${ColourReset}")   
 ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
+# Add doxygen make target for source documentation
+include(doxygen)
