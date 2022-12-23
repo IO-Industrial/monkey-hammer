@@ -65,3 +65,4 @@ include(CPack)
 
 add_subdirectory(monkey-core)
 add_subdirectory(monkey-core-test)
+add_subdirectory(monkey-comment)

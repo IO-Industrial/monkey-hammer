@@ -22,7 +22,10 @@ else()
 endif()
 
 file(GLOB MONKEY_HEADERS "include/monkey/core/*.h")
+file(GLOB MONKEY_PATTERN_HEADERS "include/monkey/core/patterns/*.h")
+file(GLOB MONKEY_FORMATTERS_HEADERS "include/monkey/core/formatters/*.h")
 file(GLOB MONKEY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
+file(GLOB MONKEY_FORMATTERS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/source/formatters/*.cpp")
 
 file(GLOB MONKEY_COMMON_SRC
 	${MONKEY_SOURCE}
