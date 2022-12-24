@@ -18,3 +18,10 @@ find_program(
 mark_as_advanced(SPHINX_EXECUTABLE)
 
 find_package_handle_standard_args(Sphinx DEFAULT_MSG SPHINX_EXECUTABLE)
+
+# If finding Sphinx fails, there is no use in defining
+# add_sphinx_document, so return early
+if(NOT Sphinx_FOUND)
+    return()
+endif()
+

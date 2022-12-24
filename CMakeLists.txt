@@ -61,6 +61,25 @@ include(external_dependencies)
 # Add doxygen make target for source documentation
 include(doxygen)
 find_package(Sphinx)
+
+# configured documentation tools and intermediate build results
+set(BINARY_BUILD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/doc/")
+
+# Sphinx cache with pickled ReST documents
+set(SPHINX_CACHE_DIR "${CMAKE_CURRENT_BINARY_DIR}/_doctrees")
+ 
+# HTML output directory
+set(SPHINX_HTML_DIR "${CMAKE_CURRENT_BINARY_DIR}/html")
+
+add_custom_target(my_project_docs ALL
+    ${SPHINX_EXECUTABLE}
+        -q -b html
+        -c "${BINARY_BUILD_DIR}"
+        -d "${SPHINX_CACHE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/doc/"
+        "${SPHINX_HTML_DIR}"
+    COMMENT "Building HTML documentation with Sphinx")
+
 include(CTest)
 include(CPack)
 
