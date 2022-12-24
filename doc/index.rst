@@ -10,8 +10,9 @@ Welcome to Monkey Hammer's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
-
+   intro.rst
+   monkey-comment.rst
+   
 Indices and tables
 ==================
 
