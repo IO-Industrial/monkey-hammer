@@ -1,3 +1,4 @@
+PROJECT("monkey-hammer")
 # Monkey Hammer 
 #
 # Copyright (C) 2023  Joe Turner <joe@agavemountain.com>
@@ -18,7 +19,6 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: GPL-3.0-or-later.
 #
-#PROJECT("monkey-hammer")
 cmake_minimum_required (VERSION 3.12)
 
 # FIXME: until automatic versioning is fixed, we hard code:
@@ -60,6 +60,7 @@ include(external_dependencies)
 
 # Add doxygen make target for source documentation
 include(doxygen)
+find_package(Sphinx)
 include(CTest)
 include(CPack)
 
